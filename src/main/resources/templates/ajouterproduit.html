@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.com"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="utf-8"/>
+    <title>Index page</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-$END$
+<div layout:fragment="content">
+    <div class="container" align="center">
+        <form action="/ajouterOnce" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control w-50" id="title" name="title">
+                <span class="text-danger"  th:errors="${produit.title}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="designation" class="form-label">Designation</label>
+                <textarea class="form-control w-50" id="designation" name="designation" maxlength="100"></textarea>
+                <span class="text-danger"  th:errors="${produit.designation}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="prix" class="form-label">Price</label>
+                <input type="text" class="form-control w-50" id="prix" name="prix">
+                <span class="text-danger" th:errors="${produit.prix}"></span>
+            </div>
+            <button type="submit" class="btn btn-primary form-control w-50" value="Ajouter">Ajouter</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+        xmlns:th="http://www.thymeleaf.com"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="template" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="utf-8"/>
+    <title>Update Produit</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
 </head>
 <body>
-$END$
+
+<div layout:fragment="content">
+    <div class="p-3 m-2">
+        <div class="card">
+            <div class="card-header">Modifier Produit</div>
+            <div class="card-body">
+
+                <div class="form-group">
+                    <form class="form-inline" action="/ajouter" method="post">
+                        <input class="form-control" type="hidden" name="id" th:value="${produitToBeUpdated.getId()}">
+                        Title: <input class="form-control" name="title" type="text"
+                                      th:value="${produitToBeUpdated.getTitle()}">
+                        Designation: <input class="form-control" name="designation" type="text"
+                                            th:value="${produitToBeUpdated.getDesignation()}">
+                        Price: <input class="form-control" name="prix" type="text"
+                                      th:value="${produitToBeUpdated.getPrix()}">
+                        <br>
+                        <input class="btn btn-primary  form-control" type="submit" value="Modifier">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Gestion des Produits</title>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-$END$
+
+<div class="p-3 m-2">
+    <div class="card">
+        <div class="card-header">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <ul class="navbar nav">
+                    <li><a class="btn-dark" th:href="@{indexpage}">Index</a> |</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Manage
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" th:href="@{ajouterproduit}">Add Product</a></li>
+                            <li><a class="dropdown-item" th:href="@{indexpage}">Search</a></li>
+                        </ul>
+                    </li>
+
+                    <li sec:authorize="isAuthenticated()">
+                        | <a class="btn-dark" th:href="@{/logout}">Logout</a></li>
+
+
+                    <li sec:authorize="!isAuthenticated()">
+                        | <a class="btn-dark" th:href="@{/login}">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="card-body">
+            <section layout:fragment="content"></section>
+        </div>
+        <div class="card-footer" align="center">&copy; copyright: xproce 2024<br/> X - Casablanca- Morocco</br>
+            badr.hirchoua@gmail.com
+        </div>
+    </div>
+</div>
 </body>
 </html>
