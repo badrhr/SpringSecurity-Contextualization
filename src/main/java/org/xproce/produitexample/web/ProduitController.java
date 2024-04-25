@@ -86,9 +86,4 @@ public class ProduitController {
             return "error";
         }
     }
-
-    @GetMapping("/loginpage")
-    public String login() {
-        return "login";
-    }
 }
